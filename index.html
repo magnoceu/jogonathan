@@ -21,23 +21,46 @@
       width: 500px;
       text-align: center;
     }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     button {
       padding: 10px 20px;
       margin: 10px 5px 0 5px;
       border: none;
       border-radius: 5px;
-      background-color: #4CAF50;
-      color: white;
       font-size: 16px;
       cursor: pointer;
     }
-    button:hover {
+    .mostrar {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .mostrar:hover {
       background-color: #45a049;
     }
-    .button-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+    .ocultar {
+      background-color: #FFD700;
+      color: black;
+    }
+    .ocultar:hover {
+      background-color: #e6c200;
+    }
+    .anterior {
+      background-color: #87CEFA;
+      color: black;
+    }
+    .anterior:hover {
+      background-color: #7ec0ee;
+    }
+    .proximo {
+      background-color: #1E90FF;
+      color: white;
+    }
+    .proximo:hover {
+      background-color: #1c86ee;
     }
   </style>
 </head>
@@ -46,9 +69,10 @@
     <h2 id="pergunta"></h2>
     <p id="resposta" style="display:none; font-weight:bold;"></p>
     <div class="button-container">
-      <button onclick="mostrarResposta()">Mostrar Resposta</button>
-      <button onclick="anteriorFlashcard()">Anterior</button>
-      <button onclick="proximoFlashcard()">Próximo</button>
+      <button class="mostrar" onclick="mostrarResposta()">Mostrar Resposta</button>
+      <button class="ocultar" onclick="ocultarResposta()">Ocultar Resposta</button>
+      <button class="anterior" onclick="anteriorFlashcard()">Anterior</button>
+      <button class="proximo" onclick="proximoFlashcard()">Próximo</button>
     </div>
   </div>
 
@@ -81,6 +105,10 @@
 
     function mostrarResposta() {
       document.getElementById('resposta').style.display = 'block';
+    }
+
+    function ocultarResposta() {
+      document.getElementById('resposta').style.display = 'none';
     }
 
     function proximoFlashcard() {
