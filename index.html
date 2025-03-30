@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Flashcards – Civilizações Antigas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #flashcard {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 500px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px 0 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="flashcard">
+    <h2 id="pergunta"></h2>
+    <p id="resposta" style="display:none; font-weight:bold;"></p>
+    <div class="button-container">
+      <button onclick="mostrarResposta()">Mostrar Resposta</button>
+      <button onclick="anteriorFlashcard()">Anterior</button>
+      <button onclick="proximoFlashcard()">Próximo</button>
+    </div>
+  </div>
+
+  <script>
+    const flashcards = [
+      { pergunta: "Onde se localizava o Império Maia?", resposta: "Sul do México, Guatemala e Honduras" },
+      { pergunta: "Qual era a capital do Império Inca?", resposta: "Cusco" },
+      { pergunta: "Qual povo construiu Machu Picchu?", resposta: "Incas" },
+      { pergunta: "Qual era a capital do Império Asteca?", resposta: "Tenochtitlán" },
+      { pergunta: "Que império usava o quipu como forma de registro?", resposta: "Inca" },
+      { pergunta: "Que civilização desenvolveu a escrita hieroglífica própria?", resposta: "Maias" },
+      { pergunta: "Qual império construiu o Coliseu?", resposta: "Romano" },
+      { pergunta: "Qual era a língua oficial do Império Romano?", resposta: "Latim" },
+      { pergunta: "O que eram as chinampas?", resposta: "Ilhas artificiais de cultivo usadas pelos Astecas" },
+      { pergunta: "Qual civilização dominava a engenharia em montanhas?", resposta: "Incas" },
+      { pergunta: "Qual civilização desenvolveu o calendário solar de 365 dias?", resposta: "Maias" },
+      { pergunta: "Que povo praticava sacrifícios humanos com frequência?", resposta: "Astecas" },
+      { pergunta: "Que império influenciou o Direito moderno?", resposta: "Romano" },
+      { pergunta: "Qual povo não tinha sistema de escrita formal?", resposta: "Incas (usavam quipus)" },
+      { pergunta: "O que foi a Pax Romana?", resposta: "Um longo período de paz e estabilidade no Império Romano" }
+    ];
+
+    let indiceAtual = 0;
+
+    function mostrarFlashcard() {
+      document.getElementById('pergunta').textContent = flashcards[indiceAtual].pergunta;
+      document.getElementById('resposta').style.display = 'none';
+      document.getElementById('resposta').textContent = flashcards[indiceAtual].resposta;
+    }
+
+    function mostrarResposta() {
+      document.getElementById('resposta').style.display = 'block';
+    }
+
+    function proximoFlashcard() {
+      indiceAtual = (indiceAtual + 1) % flashcards.length;
+      mostrarFlashcard();
+    }
+
+    function anteriorFlashcard() {
+      indiceAtual = (indiceAtual - 1 + flashcards.length) % flashcards.length;
+      mostrarFlashcard();
+    }
+
+    mostrarFlashcard();
+  </script>
+</body>
+</html>
